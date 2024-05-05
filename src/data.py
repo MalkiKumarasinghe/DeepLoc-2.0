@@ -319,8 +319,8 @@ class DataloaderHandler:
         self.embed_len = embed_len
 
     def get_train_val_dataloaders(self, outer_i):
-        data_df = get_swissprot_df(self.clip_len)
-        
+        data_df1 = get_swissprot_df(self.clip_len)
+        data_df = data_df1.head(int(len(data_df1)/10))
         train_df = data_df[data_df.Partition != outer_i].reset_index(drop=True)
 
         X = np.stack(train_df["ACC"].to_numpy())
