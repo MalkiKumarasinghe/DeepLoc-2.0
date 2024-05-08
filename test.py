@@ -27,6 +27,8 @@ if __name__ == "__main__":
         embed_len=model_attrs.embed_len
     )
 
+    print("Using trained models to generate outputs for signal prediction training")
+    generate_sl_outputs(model_attrs=model_attrs, datahandler=datahandler)
 
     print("Using trained models to generate outputs of signal prediction")
     y_train, y_train_preds, y_test, y_test_preds = generate_ss_outputs(model_attrs=model_attrs, datahandler=datahandler)
