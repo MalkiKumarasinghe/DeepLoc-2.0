@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 import os
 import json
-
+from .calibration import *
 
 # taken from https://www.kaggle.com/cpmpml/optimizing-probabilities-for-best-mcc
 def mcc(tp, tn, fp, fn):
@@ -190,3 +190,6 @@ def calculate_ss_metrics(model_attrs: ModelAttributes, datahandler: DataloaderHa
     for k in metrics_dict_list:
         output_dict[k] = [f"{round(np.array(metrics_dict_list[k]).mean(), 2):.2f} pm {round(np.array(metrics_dict_list[k]).std(), 2):.2f}"]
     print(pd.DataFrame(output_dict).to_latex())
+
+    # Draw calibration plot 
+    draw_calibration_plot(model_attrs,y_test,y_test_preds)
